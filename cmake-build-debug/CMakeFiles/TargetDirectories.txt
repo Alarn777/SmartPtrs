@@ -1,0 +1,3 @@
+/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/cmake-build-debug/CMakeFiles/1.dir
