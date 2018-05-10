@@ -5,6 +5,8 @@
 #ifndef INC_1_SMARTPTR_H
 #define INC_1_SMARTPTR_H
 
+#include <iostream>
+using namespace std;
 //
 // Created by Michael Rokitko on 22/04/2018.
 //
@@ -106,7 +108,6 @@
     template <class T> class SmartPtr {
     private:
         IRefCount<T> *__m_refcount;
-
         /////////////////////////////////////////
         // __RefCounter
         // An internal implementation of IRefCount

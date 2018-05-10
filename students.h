@@ -4,8 +4,8 @@
 
 #include <iostream>
 #include <fstream>
+#include "vector"
 #include <string>
-#include "LinkedList.h"
 #include "smartPtr.h"
 #ifndef INC_1_STUDENTS_H
 #define INC_1_STUDENTS_H
@@ -32,6 +32,7 @@ public:
     void add_points(int& new_points) {points += new_points;}
     void set_activity(bool& new_) { isActive = new_;}
     void set_excluded_year(int& new_excluded_year) {excluded_year = new_excluded_year;}
+    void print();
     ~Student();
 private:
     bool isActive;
@@ -48,6 +49,7 @@ private:
 class course {
 public:
     course();
+    course(int& id);
     course(string& name_cource, int new_course_id, int new_course_value);
     string& get_course_name() { return course_name;}
     int& get_course_id() { return course_id;}
@@ -56,13 +58,10 @@ public:
     void set_course_name(string& new_course_name) {course_name = new_course_name;}
     void set_course_id(int id) { course_id = id;}
     void set_course_value(int& id) {course_value = id;}
-    void add_student_to_cource(Student* Stud_);
+    void add_student_to_cource(SmartPtr<Student>& Stud_);
     void give_student_points(string& _id);
     Student* find_stud_in_course(string& _id);
     void remove_student(string& _id);
-
-
-
 
     ~course();
 private:
@@ -71,7 +70,7 @@ private:
     int course_id;
     int course_value;
     int student_count;
-    SmartPtr<Student> students_in_course[100];
+    vector<SmartPtr<Student>> students_in_course;
 };
 
 class department {
@@ -82,19 +81,17 @@ public:
     void add_course_to_dep(course& new_course);
 
     void set_department_name(string& new_department_name) {department_name = new_department_name;}
-    void add_stud_to_dep(Student* new_stud_in_dep);
+    void add_stud_to_dep(SmartPtr<Student>& new_stud_in_dep);
     Student* find_student_in_dep(string& student_id);
     void remove_student(string& _id);
-
+    void student_list();
 
 
     ~department();
 private:
     string department_name;
-    int cources_count;
-    SmartPtr<course> courses_in_department[100];
-    int student_count;
-    SmartPtr<Student> students_in_department[400];
+    vector<SmartPtr<course>> courses_in_department;
+    vector<SmartPtr<Student>> students_in_department;
 };
 
 class college {
@@ -105,24 +102,22 @@ public:
     course& get_courses_in_college() { return reinterpret_cast<course &>(courses_in_college);}
     void set_college_name(string& new_college_name) {college_name = new_college_name;}
     college& startcollege(fstream& initiation_file);
-    void add_dep_to_colledge(department& new_department_name);
-    void add_course_to_college(course& new_cource_name);
-    void add_stud_to_college(Student* new_stud);
+    void add_dep_to_colledge(SmartPtr<department>& new_department_name);
+    void add_course_to_college(SmartPtr<course>& new_cource_name);
+    void add_stud_to_college(SmartPtr<Student>& new_stud_in_coll);
     department* find_dep_in_college(string& dep_name);
     course* find_course_in_college(string& course_id);
-    Student* find_student_in_college(string& student_id);
+    SmartPtr<Student>& find_student_in_college(string& student_id);
     void exclude_student(string& _id,string& _year);
-
     ~college();
 private:
     string college_name;
-//    course* courses_in_college;
     int department_count;
     int course_count;
-    int student_count;
-    SmartPtr<department> departments_in_college[30];
-    SmartPtr<course> courses_in_college[1000];
-    SmartPtr<Student> students_in_college[10000];
+    vector<SmartPtr<department>> departments_in_college;
+    vector<SmartPtr<course>> courses_in_college;
+    vector<SmartPtr<Student>> students_in_college;
+
 };
 
 

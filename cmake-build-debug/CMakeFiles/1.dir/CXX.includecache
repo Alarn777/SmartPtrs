@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/LinkedList.cpp
-LinkedList.h
-/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/LinkedList.h
-LinkedList.h
-/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/LinkedList.h
-
-/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/LinkedList.h
-iostream
--
-
 /Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/main.cpp
 smartPtr.h
 /Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/smartPtr.h
@@ -23,6 +13,8 @@ students.h
 /Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/students.h
 
 /Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/smartPtr.h
+iostream
+-
 
 /Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/students.cpp
 students.h
@@ -33,10 +25,10 @@ iostream
 -
 fstream
 -
+vector
+/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/vector
 string
 -
-LinkedList.h
-/Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/LinkedList.h
 smartPtr.h
 /Users/michaelrokitko/Desktop/לימודים שנקר/Tohna 4/homeworks/1/smartPtr.h
 

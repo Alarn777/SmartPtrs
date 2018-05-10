@@ -1,1 +1,1 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/1.dir/main.cpp.o CMakeFiles/1.dir/students.cpp.o CMakeFiles/1.dir/LinkedList.cpp.o  -o 1 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/1.dir/main.cpp.o CMakeFiles/1.dir/students.cpp.o  -o 1 

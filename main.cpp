@@ -2,7 +2,7 @@
 #include "students.h"
 using namespace std;
 
-void simulation_(fstream& sim_,college& new_college);
+void simulation_(fstream& sim_,college& new_college,fstream& out_file);
 int main(int argc, char* argv[]) {
     college Shenkar;
     fstream initiator;
@@ -14,24 +14,11 @@ int main(int argc, char* argv[]) {
     else
         Shenkar = Shenkar.startcollege(initiator);
     simulation.open(argv[2]);
-    outFile.open(argv[3]);
+    outFile.open(argv[2]);
     if (!simulation.is_open() || !outFile.is_open() )
         cout << "Error opening file" << endl;
     else
         simulation_(simulation,Shenkar,outFile);
-
-
-
-
-
-
-    string buffer_;
-    string name = "Dan";
-    string lastname = "Cohen";
-    string id = "111111111";
-    string address = "Tel-Aviv Dereh-ha-shalom 120";
-
-
 
     return 0;
 
@@ -41,10 +28,8 @@ int main(int argc, char* argv[]) {
 
 void simulation_(fstream& sim_,college& new_college,fstream& out_file){
     int decision = -1;
-    char buffer[512];
     string buffer_;
     string temp_tag = "";
-    int const menuEnd = 99;
     while(!sim_.eof()) {
         getline(sim_, buffer_);
         if (buffer_[0] == '#' || buffer_.empty())
@@ -106,9 +91,10 @@ void simulation_(fstream& sim_,college& new_college,fstream& out_file){
                     }
                     i++;
                     department *dep_ = new_college.find_dep_in_college(temp_tag);
-                    auto *new_student = new Student(name, id_temp, last_name, temp_address, year_);
-                    dep_->add_stud_to_dep(new_student);
-                    new_college.add_stud_to_college(new_student);
+//                    auto *new_student = new Student(name, id_temp, last_name, temp_address, year_);
+                    SmartPtr<Student> new_stud = new Student(name, id_temp, last_name, temp_address, year_);
+                    new_college.add_stud_to_college(new_stud);
+                    dep_->add_stud_to_dep(new_stud);
                     cout << "Student was added" << endl;
                     break;
 
@@ -130,7 +116,7 @@ void simulation_(fstream& sim_,college& new_college,fstream& out_file){
                     i++;
                     string course_code = temp_tag;
                     course* temp_course = new_college.find_course_in_college(course_code);
-                    Student* temp_student = new_college.find_student_in_college(id);
+                    SmartPtr<Student> temp_student = new_college.find_student_in_college(id);
                     temp_course->add_student_to_cource(temp_student);
                     cout << "Student " << id <<  " was added to course " << course_code << endl;
                     break;
@@ -173,18 +159,35 @@ void simulation_(fstream& sim_,college& new_college,fstream& out_file){
                     i++;
                     string year_excluded = temp_tag;
                     new_college.exclude_student(id,year_excluded);
+//
                     cout << "Student " << id <<  " was excluded in year " << year_excluded << endl;
-
-//                    Student* a = new_college.find_student_in_college(id);
-//                    cout << a->get_excluded_year() << " " << a->get_points();
+                    Student* a = new_college.find_student_in_college(id);
+                   cout << a->get_excluded_year() << " " << a->get_points();
                     break;
                 }
                 case 5: {
+                    //5,Engineering,1998
+                    for (temp_tag = "";buffer_[i] != ',' && buffer_[i] != '\n' && buffer_[i] != '\r' && buffer_[i] != '\0';i++ )
+                    {
+                        if (buffer_[i] != '\r' && buffer_[i] != '\n')
+                            temp_tag += buffer_[i];
+                    }
+                    i++;
+                    string dep_ = temp_tag;
+                    temp_tag = "";
+                    for (temp_tag = "";buffer_[i] != ',' && buffer_[i] != '\n' && buffer_[i] != '\r' && buffer_[i] != '\0';i++ )
+                    {
+                        if (buffer_[i] != '\r' && buffer_[i] != '\n')
+                            temp_tag += buffer_[i];
+                    }
+                    i++;
+                    string starting_year = temp_tag;
 
-
+                    department* department1 = new_college.find_dep_in_college(dep_);
+                    department1->student_list();
                     break;
-                }
 
+                }
                 case 99: {
 
                     cout << "Good bye!" << endl;

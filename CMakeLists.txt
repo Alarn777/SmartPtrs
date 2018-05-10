@@ -5,6 +5,5 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp
                  students.cpp
-        LinkedList.cpp
         smartPtr.h)
 add_executable(1 ${SOURCE_FILES})
